@@ -1,6 +1,5 @@
 // CLASS
-
-const elementArray = []
+let elementCount = 0
 
 class Product {
     constructor(name, price, year) {
@@ -42,6 +41,10 @@ class UI {
         if (element.name === 'delete') {
             element.parentElement.parentElement.parentElement.remove();
             this.showMessage('Product deleted Successfully', 'danger')
+            elementCount--
+            console.log(elementCount)
+            const count = document.getElementById('count');
+            count.innerHTML = elementCount
         }
     }
 
@@ -70,8 +73,10 @@ document.getElementById("product-form")
 
         const product = new Product(name, price, year);
 
-        elementArray.push(product);
-        console.log(elementArray);
+        elementCount++
+        console.log(elementCount);
+
+
 
 
         const ui = new UI();
@@ -87,10 +92,13 @@ document.getElementById("product-form")
         e.preventDefault();
 
 
+        const count = document.getElementById('count');
+        count.innerHTML = elementCount
     })
-
 
 document.getElementById('product-list').addEventListener('click', function (e) {
     const ui = new UI();
     ui.deleteProducts(e.target);
 })
+
+
