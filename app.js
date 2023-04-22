@@ -77,7 +77,6 @@ document
     const ui = new UI();
 
     if (name === "" || price === "" || year === "") {
-      elementCount = false;
       return ui.showMessage("Complete Fields Please", "warning");
     }
 
